@@ -1,7 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
+import { BookContext } from "../contexts/BookContext";
 
 const BookDetails = ({ book }) => {
-  return <div>{book.title}</div>;
+  const { removeBook } = useContext(BookContext);
+
+  return (
+    <li>
+      <div className="title">{book.title}</div>
+      <div className="author">{book.author}</div>
+    </li>
+  );
 };
 
 export default BookDetails;
