@@ -1,3 +1,5 @@
+import { v4 as uuid } from "uuid";
+
 export const BookReducer = (state, action) => {
   switch (action.type) {
     case "ADD_BOOK":
@@ -6,12 +8,12 @@ export const BookReducer = (state, action) => {
         {
           title: action.book.title,
           author: action.book.author,
-          id: action.author.id,
+          id: uuid(),
         },
       ];
-      break;
-
+    case "REMOVE_BOOK":
+      return state.filter((book) => book.id !== action.id);
     default:
-      break;
+      return state;
   }
 };
