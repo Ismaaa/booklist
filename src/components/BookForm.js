@@ -2,12 +2,19 @@ import React, { useContext, useState } from "react";
 import { BookContext } from "../contexts/BookContext";
 
 const BookForm = () => {
-  const { addBook } = useContext(BookContext);
+  const { books, addBook } = useContext(BookContext);
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    addBook(title, author);
+    resetInputs();
+  };
+
+  const resetInputs = () => {
+    setTitle("");
+    setAuthor("");
   };
 
   return (
